@@ -15,10 +15,10 @@ public class DriverArrayList {
 
 		// access OR random read --> get the 3rd element
 		System.out.println(cities.get(3)); // AHM --> O(1)
-
+		// cities.add(1, "KOL");
 		cities.remove(1);
-
 		System.out.println(cities);
+			
 	}
-
+	
 }
