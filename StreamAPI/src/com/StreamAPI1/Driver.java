@@ -1,25 +1,31 @@
 package com.StreamAPI1;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Driver {
 
 	public static void main(String[] args) {
-		List<Integer> input = Arrays.asList(10, 4, 15, 4, 5, 6, 6, 7, 8);
-		// remove the duplicate
-//		List<Integer> output = input.stream().distinct().collect(Collectors.toList());
-//		System.out.println(output);
-		
-		// sorting
-//		output.stream().sorted((a,b) -> a-b).forEach(number -> System.out.print(number +", "));
-//		System.out.println();
-//		output.stream().sorted((a,b) -> b-a).forEach(number -> System.out.print(number +", "));
-//		System.out.println();
-		
-		input.stream().skip(2).forEach(n -> System.out.println(n));
-		
+		ArrayList<String> products = new ArrayList<String>();
+
+		// Storing the products
+		products.add("apple");
+		products.add("samsung");
+		products.add("lg");
+		products.add("sony");
+
+		// Now we need to process the products --> find the products which are starting with 's'
+
+		Iterator<String> itr = products.iterator(); // 10 lines of code to process...
+
+		while (itr.hasNext()) {
+			String product = (String) itr.next();
+			// logic
+			if (product.startsWith("s")) {
+				System.out.println("products " + product);
+			}
+
+		}
 	}
 
 }
