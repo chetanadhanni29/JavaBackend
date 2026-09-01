@@ -1,0 +1,29 @@
+package com.amazon;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.amazon.config.SpringConfig;
+//import com.amazon.di.constructor.emp.Employee;
+
+public class App {
+	public static void main(String[] args) {
+		
+//		Constructor Dependency Injection 
+//		ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//		Employee e1 = (Employee) context.getBean("emp1");
+		
+		
+//		Setter Dependency Injection 
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp2");
+
+		
+//		Field Dependency Injection 
+//		ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp3");
+
+		e1.printInfo();
+		context.close();
+	}
+}
