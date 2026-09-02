@@ -15,14 +15,19 @@ public class App {
 		
 		
 //		Setter Dependency Injection 
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp2");
+//		ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+//		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp2");
 
 		
 //		Field Dependency Injection 
 //		ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
 //		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp3");
 
+		
+//		Spring Bean Life Cycle
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+		com.amazon.di.setter.emp.Employee e1 = (com.amazon.di.setter.emp.Employee) context.getBean("emp2");
+		
 		e1.printInfo();
 		context.close();
 	}

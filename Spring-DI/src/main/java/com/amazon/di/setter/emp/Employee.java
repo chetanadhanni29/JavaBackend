@@ -21,7 +21,7 @@ public class Employee {
 	}
 
 	public void setAddress(Address _address) {
-		System.out.println("2. Employee.Employee() - Dependecny Injection ");
+		System.out.println("2. Employee.Employee() - Dependency Injection ");
 		this.address = _address;
 	}
 
