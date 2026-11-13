@@ -1,41 +1,53 @@
 package com.rapido.repository;
 
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.rapido.entity.BookingEntity;
-
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 @Repository
 public class BookingRepository {
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@PersistenceContext
+	private EntityManager entityManager;
+
 	@Transactional
 	public int createBooking(String mobile, String src, String dest, String type, String amount) {
-
 		System.out.println("BookingRepository.createBooking() ::::::::::::");
-
-		Session session = sessionFactory.getCurrentSession();
-
+//		Session session = sessionFactory.getCurrentSession();
 		BookingEntity bookingEntity = new BookingEntity();
-
 		bookingEntity.setAmount(amount);
 		bookingEntity.setDestination(dest);
 		bookingEntity.setRidetype(type);
 		bookingEntity.setSource(src);
 		bookingEntity.setMobile(mobile);
-
-		session.persist(bookingEntity);// Insert one record in database
-
+		
+//		session.persist(bookingEntity);// Insert one record in database
+		
+		entityManager.persist(bookingEntity);// Insert one record in database
 		if (bookingEntity.getId() > 0) {
 			return bookingEntity.getId();
 		}
-
 		return 0;
+	}
+
+	// Return booking using booking ID in the booking table.
+	public BookingEntity findBook(int bookId) {
+		BookingEntity book = entityManager.find(BookingEntity.class, bookId);
+		return book;
+	}
+
+	// Return every booking currently stored in the booking table.
+	public List<BookingEntity> findAllBookings() {
+		return entityManager
+				.createQuery("SELECT booking FROM BookingEntity booking ORDER BY booking.id DESC", BookingEntity.class)
+				.getResultList();
 	}
 }
